@@ -13,6 +13,13 @@ Db.prototype._connect = function() {
   var self = this;
   mongo.MongoClient.connect(this.dbPath, function(err, db) {
     self.db = db;
+
+    self.getStatuses(function(statuses) {
+      for (var i = 0; i < statuses.length; i++) {
+        var row = statuses[i];
+        console.log(row.user + ': is away ' + row.date + ' message: ' + row.msg);
+      }
+    });
   });
 }
 
@@ -31,7 +38,7 @@ Db.prototype.saveStatus = function(user, id, date, msg) {
     { $set: { 'user': user, 'date': date, 'msg': msg } },
     { upsert: true },
     function(err, results) {
-      console.log(result);
+      console.log(results);
       if (err)
         throw err;
     });

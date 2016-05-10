@@ -14,17 +14,21 @@ module.exports = function(cartman) {
     res.send('test ' + username + ' ' +  userId);
   });
 
-  router.post('/set-status', function(req, res) {
+  router.get('/set-status', function(req, res) {
     try {
       var self = this;
       var username = req.body.user_name;
       var userId = req.body.user_id;
       var text = req.body.text.split(',');
+      // var username = req.query.user;
+      // var userId = req.query.id;
+      // var text = req.query.text.split(',');
       var date = text[0].trim();
       var msg = text[1].trim();
+      console.log(date);
+      console.log(msg);
 
-
-      if (date.match('(?:\d{4}-\d{2}-\d{2})')) {
+      if (date.match('[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])')) {
         console.log('correct date');
         cartman.commands.saveStatus(username, userId, date, msg);
       } else {
@@ -36,7 +40,7 @@ module.exports = function(cartman) {
     }
 
 
-    res.send('Your status has been set. '  + userId);
+    res.send('Your status has been set.');
   });
 
 
