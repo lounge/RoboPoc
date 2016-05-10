@@ -36,21 +36,23 @@ module.exports = function(cartman) {
     }
 
 
-    res.send('Your status has been set.');
+    res.send('Your status has been set. '  + userId);
   });
 
 
-  router.post('/where-is', function(req, res) {
+  router.get('/where-is', function(req, res) {
     try {
       var self = this;
       var username = req.body.user_name;
       var userId = req.body.user_id;
-      var text = req.body.text.trim();
+      var text = req.body.text;
 
       if (text == null)  {
         console.log('where is all');
         cartman.commands.getStatuses(function(reply) {
+          console.log(reply);
           cartman.sendMessage(reply);
+
         });
       }
 

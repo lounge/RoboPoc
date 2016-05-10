@@ -31,6 +31,7 @@ Db.prototype.saveStatus = function(user, id, date, msg) {
     { $set: { 'user': user, 'date': date, 'msg': msg } },
     { upsert: true },
     function(err, results) {
+      console.log(result);
       if (err)
         throw err;
     });
@@ -45,6 +46,15 @@ Db.prototype.getStatusForUser = function(id, callback) {
       }
   });
 }
+
+Db.prototype.getStatuses = function(callback) {
+  this.db.collection('status')
+    .find()
+    .toArray(function(err, statuses) {
+      callback(statuses);
+    });
+}
+
 
 
 module.exports = Db;
