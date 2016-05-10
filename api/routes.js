@@ -40,7 +40,7 @@ module.exports = function(cartman) {
   });
 
 
-  router.get('/where-is', function(req, res) {
+  router.post('/where-is', function(req, res) {
     try {
       var self = this;
       var username = req.body.user_name;
