@@ -14,7 +14,7 @@ module.exports = function(cartman) {
     res.send('test ' + username + ' ' +  userId);
   });
 
-  router.get('/set-status', function(req, res) {
+  router.post('/set-status', function(req, res) {
     try {
       var self = this;
       var username = req.body.user_name;
