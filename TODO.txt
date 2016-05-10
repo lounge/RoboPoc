@@ -1,10 +1,10 @@
 * Add express server to map slash commands to routes
 
 * Commands:
-  - /status (date, message)
-  - /status (date - date, message)
+  - /set-away (date, message)
+  - /set-away (date - date, message)
   - /change-status (--||--)
-  - /status (@username)
-  - /status (@everyone)
+  - /where-is (@username)
+  - /where-is (@everyone)
 
 * Features

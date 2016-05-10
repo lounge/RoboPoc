@@ -24,6 +24,17 @@ Db.prototype.close = function() {
   });
 }
 
+Db.prototype.saveStatus = function(user, id, date, msg) {
+  var self = this;
+  this.db.collection('status').updateOne(
+    { 'id': id },
+    { $set: { 'user': user, 'date': date, 'msg': msg } },
+    { upsert: true },
+    function(err, results) {
+      if (err)
+        throw err;
+    });
+}
 
 
 module.exports = Db;
