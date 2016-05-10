@@ -36,5 +36,15 @@ Db.prototype.saveStatus = function(user, id, date, msg) {
     });
 }
 
+Db.prototype.getStatusForUser = function(id, callback) {
+  this.db.collection('status')
+    .findOne({ 'id': id })
+    .then(function(data) {
+      if (data !== null) {
+        callback(data);
+      }
+  });
+}
+
 
 module.exports = Db;

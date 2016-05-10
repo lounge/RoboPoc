@@ -39,5 +39,29 @@ module.exports = function(cartman) {
     res.send('Your status has been set.');
   });
 
+
+  router.post('/where-is', function(req, res) {
+    try {
+      var self = this;
+      var username = req.body.user_name;
+      var userId = req.body.user_id;
+      var text = req.body.text.trim();
+
+      if (text == null)  {
+        console.log('where is all');
+        cartman.commands.getStatuses(function(reply) {
+          cartman.sendMessage(reply);
+        });
+      }
+
+    } catch (err) {
+      res.send(err.message);
+    }
+
+
+    res.send('where-is everyone.');
+  });
+
   return router;
+
 }
