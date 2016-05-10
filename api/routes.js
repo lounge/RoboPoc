@@ -32,7 +32,7 @@ module.exports = function(cartman) {
       }
       //TODO: Regex: (?:\d{4}-\d{2}-\d{2}) (?:\d{4}-\d{2}-\d{2})
     } catch (err) {
-      res.send(err);
+      res.send(err.message);
     }
 
 
