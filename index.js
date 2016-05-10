@@ -1,6 +1,6 @@
 'use strict'
 
-var Klagobert = require('./lib/cartman');
+var Cartman = require('./lib/cartman');
 var Db = require('./data/db');
 var Commands = require('./lib/commands');
 var Messages = require('./lib/messages');
@@ -11,7 +11,7 @@ var server = express();
 
 var token = process.env.BOT_API_KEY;
 var name = process.env.BOT_NAME;
-var dbPath = process.env.MONGODB_URI;
+var dbPath = process.env.MONGODB_GOLD_URI;
 var channelId = process.env.CHANNEL_ID;
 var port =  process.env.PORT || 3000;
 
