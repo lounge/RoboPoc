@@ -1,1 +1,1 @@
-A slack bot that displays aways states.
+A slack bot that displays away states.
