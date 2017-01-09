@@ -7,18 +7,16 @@ var router = express.Router();
 module.exports = function(robopoc) {
 
   router.get('/test', function(req, res) {
-    var username = req.body.user_name;
-    var userId = req.body.user_id;
+    var json = req.body;
   });
 
-  router.post('/status', function(req, res) {
+  router.post('/latestFailed', function(req, res) {
     try {
-      var self = this;
-      var username = req.body.user_name;
-      var userId = req.body.user_id;
-      var text = req.body.text.split(',');
+      var build = req.body; //json
+      robopoc.sendMessage(build.ProjectName + ' ' + build.LastModifiedBy);
     } catch (err) {
-      res.send(err.message);
+      // res.send(err.message);
+      robopoc.sendMessage(err.message);
     }
     //robopoc.sendMessage(msg);
   });
