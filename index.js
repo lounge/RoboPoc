@@ -1,7 +1,6 @@
 'use strict'
 
 var RoboPoc = require('./lib/robopoc');
-var Db = require('./data/db');
 var Commands = require('./lib/commands');
 var Messages = require('./lib/messages');
 
@@ -15,15 +14,13 @@ var dbPath = process.env.MONGODB_GOLD_URI;
 var channelId = process.env.CHANNEL_ID;
 var port =  process.env.PORT || 3000;
 
-var db = new Db(dbPath);
-var messages = new Messages(db);
-var commands = new Commands(db, messages);
+var messages = new Messages();
+var commands = new Commands(messages);
 
 var robopoc = new RoboPoc({
   channelId: channelId,
   token: token,
   name: name,
-  db: db,
   messages: messages,
   commands: commands,
 });
