@@ -19,7 +19,7 @@ var db = new Db(dbPath);
 var messages = new Messages(db);
 var commands = new Commands(db, messages);
 
-var cartman = new RoboPoc({
+var robopoc = new RoboPoc({
   channelId: channelId,
   token: token,
   name: name,

@@ -1,1 +1,3 @@
-A slack bot that displays away states.
+
+# RoboPoc
+A work slack bot
