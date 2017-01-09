@@ -1,6 +1,6 @@
 'use strict'
 
-var Cartman = require('./lib/cartman');
+var RoboPoc = require('./lib/robopoc');
 var Db = require('./data/db');
 var Commands = require('./lib/commands');
 var Messages = require('./lib/messages');
@@ -19,7 +19,7 @@ var db = new Db(dbPath);
 var messages = new Messages(db);
 var commands = new Commands(db, messages);
 
-var cartman = new Cartman({
+var cartman = new RoboPoc({
   channelId: channelId,
   token: token,
   name: name,
@@ -28,11 +28,11 @@ var cartman = new Cartman({
   commands: commands,
 });
 
-var routes = require('./api/routes')(cartman);
+var routes = require('./api/routes')(robopoc);
 
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 server.use('/', routes);
 server.listen(port);
 
-cartman.run();
+robopoc.run();
