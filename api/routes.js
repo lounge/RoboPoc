@@ -14,8 +14,9 @@ module.exports = function(robopoc) {
     try {
       var build = req.body; //json
       robopoc.sendMessage(build.ProjectName + ' ' + build.LastModifiedBy);
+      res.send('success');
     } catch (err) {
-      // res.send(err.message);
+      res.send(err.message);
       robopoc.sendMessage(err.message);
     }
     //robopoc.sendMessage(msg);
