@@ -28,8 +28,8 @@ module.exports = function(robopoc) {
     robopoc.sendMessages(
       {
         title: '*Build Status*',
-        messages: [{ 'text': '*' + success + '* succesful builds', 'color': 'good'},
-                   { 'text': '*' + fail + '* failed builds', 'color': 'danger' }]
+        messages: [{ 'text': success + ' succesful builds', 'color': 'good'},
+                   { 'text': fail + ' failed builds', 'color': 'danger' }]
       });
 
     // robopoc.sendSuccessMessage(success + ' succesful builds');
