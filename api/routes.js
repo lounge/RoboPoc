@@ -10,13 +10,21 @@ module.exports = function(robopoc) {
     var json = req.body;
   });
 
+  router.post('/', function(req, res, next) {
+    res.send({ success: true });
+  });
+
+  router.post('/latest', function(req, res, next) {
+    res.send({ success: true });
+  });
+
   router.post('/latestFailed', function(req, res) {
     try {
       var build = req.body; //json
       robopoc.sendMessage(build.ProjectName + ' ' + build.LastModifiedBy);
-      res.send('success');
+      res.send({ success: true });
     } catch (err) {
-      res.send(err.message);
+      res.send({ success: false });
       robopoc.sendMessage(err.message);
     }
     //robopoc.sendMessage(msg);
