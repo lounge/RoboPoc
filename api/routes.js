@@ -22,7 +22,7 @@ module.exports = function(robopoc) {
       if (build.Status === 'FAILURE') {
         fail++;
       } else {
-        succes++;
+        success++;
       }
     }
     robopoc.sendMessage(success + ' succesfull builds');
