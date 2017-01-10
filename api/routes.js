@@ -11,14 +11,17 @@ module.exports = function(robopoc) {
   });
 
   router.post('/', function(req, res, next) {
+    console.log('api: /');
     res.send({ success: true });
   });
 
   router.post('/latest', function(req, res, next) {
+    console.log('api: /latest');
     res.send({ success: true });
   });
 
   router.post('/latestFailed', function(req, res) {
+    console.log('api: /latestFailed');
     try {
       var build = req.body; //json
       robopoc.sendMessage(build.ProjectName + ' ' + build.LastModifiedBy);
