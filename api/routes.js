@@ -25,7 +25,7 @@ module.exports = function(robopoc) {
         success++;
       }
     }
-    robopoc.sendMessage(success + ' succesfull builds');
+    robopoc.sendMessage(success + ' succesful builds');
     robopoc.sendMessage(fail + ' failed builds');
     res.send({ success: true });
   });
@@ -39,7 +39,7 @@ module.exports = function(robopoc) {
     console.log('api: /latestFailed');
     try {
       var build = req.body; //json
-      robopoc.sendMessage(build.LastModifiedBy + ' broke the build! [Project]: ' + build.ProjectName);
+      robopoc.sendMessage(build.LastModifiedBy + ' broke the build!\n[Project]: ' + build.ProjectName);
       res.send({ success: true });
     } catch (err) {
       res.send({ success: false });
