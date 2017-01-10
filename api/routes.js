@@ -15,21 +15,21 @@ module.exports = function(robopoc) {
     console.log('api: /');
     var builds = req.body;
 
-    var success = 0;
-    var fail = 0;
+    var successCount = 0;
+    var failCount = 0;
     for (var i = 0; i < builds.length; i++) {
       var build = builds[i];
       if (build.Status === 'FAILURE') {
-        fail++;
+        failCount++;
       } else {
-        success++;
+        successCount++;
       }
     }
     robopoc.sendMessages(
       {
         title: '*Build Status*',
-        messages: [{ 'text': success + ' succesful builds', 'color': 'good'},
-                   { 'text': fail + ' failed builds', 'color': 'danger' }]
+        messages: [{ 'title': 'Suceeded', 'text': successCount + ' builds', 'color': 'good'},
+                   { 'title': 'Failed', 'text': failCount + ' builds', 'color': 'danger' }]
       });
 
     // robopoc.sendSuccessMessage(success + ' succesful builds');
