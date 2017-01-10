@@ -17,7 +17,7 @@ module.exports = function(robopoc) {
 
     var success = 0;
     var fail = 0;
-    for (var i = 0; i < builds.length) {
+    for (var i = 0; i < builds.length; i++) {
       var build = builds[i];
       if (build.Status === 'FAILURE') {
         fail++;
