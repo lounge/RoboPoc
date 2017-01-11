@@ -63,7 +63,23 @@ module.exports = function(robopoc) {
     console.log('api: /latestFailed');
     try {
       var build = req.body; //json
-      robopoc.sendErrorMessage({ title: '*' + build.LastModifiedBy + '* broke the build!', message: '[Project]: ' + build.ProjectName });
+
+      // robopoc.sendMessages(
+      //   {
+      //     title: '*' + build.LastModifiedBy + '* broke the build! :bomb::boom:',
+      //     messages: [{ 'title': 'Project', 'text': build.ProjectName, 'color': 'good'},
+      //                { 'title': 'Failed', 'text': failCount + ' builds', 'color': 'danger' }]
+      //   });
+
+      robopoc.sendErrorMessage(
+        {
+          title: '*' + build.LastModifiedBy + '* broke the build! :bomb::boom:',
+          message: '[Project] ' + build.ProjectName + '\n' +
+                   '[Build step] ' + build.StepName + '\n' +
+                   '[Comment] ' + build.Comment + '\n' +
+                   '[Build log] ' + build.WebUrl + '&tab=buildLog'
+        });
+
       res.send({ success: true });
     } catch (err) {
       res.send({ success: false });
