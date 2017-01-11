@@ -15,21 +15,34 @@ module.exports = function(robopoc) {
     console.log('api: /');
     var builds = req.body;
 
+    var messages = [];
     var successCount = 0;
     var failCount = 0;
+
     for (var i = 0; i < builds.length; i++) {
       var build = builds[i];
       if (build.Status === 'FAILURE') {
         failCount++;
+        messages.push({
+          'color': 'danger',
+          'title': 'Broken by :boom:' + build.LastModifiedBy + ':boom:',
+          'text':  '[Project] ' + build.ProjectName + '\n' +
+                   '[Build step] ' + build.StepName + '\n' +
+                   '[Comment] ' + build.Comment + '\n' +
+                   '[Date] ' + build.FinishDate + '\n' +
+                   '[Log] <' + build.WebUrl + '&tab=buildLog|Build log>'
+        });
       } else {
         successCount++;
       }
     }
+
+    messages.push({ 'title': 'Suceeded', 'text': successCount + ' builds', 'color': 'good'});
+
     robopoc.sendMessages(
       {
         title: '*Build Status*',
-        messages: [{ 'title': 'Suceeded', 'text': successCount + ' builds', 'color': 'good'},
-                   { 'title': 'Failed', 'text': failCount + ' builds', 'color': 'danger' }]
+        messages: messages
       });
 
     res.send({ success: true });
@@ -68,7 +81,7 @@ module.exports = function(robopoc) {
   });
 
   router.post('/failed', function(req, res) {
-    console.log('api: /latestFailed');
+    console.log('api: /failed');
     try {
       var builds = req.body;
       var messages = [];
