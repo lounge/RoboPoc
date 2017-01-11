@@ -39,6 +39,22 @@ module.exports = function(robopoc) {
 
   router.post('/latest', function(req, res, next) {
     console.log('api: /latest');
+    var build = req.body;
+
+    console.log('id: ' + build.Id);
+    console.log('Number: ' + build.Number);
+    console.log('Agent: ' + build.Agent);
+    console.log('ProjectId: ' + build.ProjectId);
+    console.log('ProjectName: ' + build.ProjectName);
+    console.log('StepName: ' + build.StepName);
+    console.log('Status: ' + build.Status);
+    console.log('FinishDate: ' + build.FinishDate);
+    console.log('WebUrl: ' + build.WebUrl);
+    console.log('Href: ' + build.Href);
+    console.log('BuildConfigWebUrl: ' + build.BuildConfigWebUrl);
+    console.log('BuildConfigId: ' + build.BuildConfigId);
+    console.log('BuildTypeId: ' + build.BuildTypeId);
+
     res.send({ success: true });
   });
 
