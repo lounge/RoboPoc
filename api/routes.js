@@ -54,6 +54,7 @@ module.exports = function(robopoc) {
     console.log('BuildConfigWebUrl: ' + build.BuildConfigWebUrl);
     console.log('BuildConfigId: ' + build.BuildConfigId);
     console.log('BuildTypeId: ' + build.BuildTypeId);
+    console.log('Comment: ' + build.Comment);
 
     res.send({ success: true });
   });
