@@ -89,7 +89,7 @@ module.exports = function(robopoc) {
       robopoc.sendMessages(
         {
           title: '*Broken builds!* :bomb::boom:',
-          messages: messages;
+          messages: messages
         });
 
       res.send({ success: true });
