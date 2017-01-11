@@ -32,8 +32,6 @@ module.exports = function(robopoc) {
                    { 'title': 'Failed', 'text': failCount + ' builds', 'color': 'danger' }]
       });
 
-    // robopoc.sendSuccessMessage(success + ' succesful builds');
-    // robopoc.sendErrorMessage(fail + ' failed builds');
     res.send({ success: true });
   });
 
@@ -62,22 +60,36 @@ module.exports = function(robopoc) {
   router.post('/latestFailed', function(req, res) {
     console.log('api: /latestFailed');
     try {
-      var build = req.body; //json
+      res.send({ success: true });
+    } catch (err) {
+      res.send({ success: false });
+      robopoc.sendErrorMessage({ title: '*Something went wrong*', message: err.message });
+    }
+  });
 
-      // robopoc.sendMessages(
-      //   {
-      //     title: '*' + build.LastModifiedBy + '* broke the build! :bomb::boom:',
-      //     messages: [{ 'title': 'Project', 'text': build.ProjectName, 'color': 'good'},
-      //                { 'title': 'Failed', 'text': failCount + ' builds', 'color': 'danger' }]
-      //   });
+  router.post('/failed', function(req, res) {
+    console.log('api: /latestFailed');
+    try {
+      var builds = req.body;
+      var messages = [];
 
-      robopoc.sendErrorMessage(
-        {
-          title: '*' + build.LastModifiedBy + '* broke the build! :bomb::boom:',
-          message: '[Project] ' + build.ProjectName + '\n' +
+      for (var i = 0; i < builds.length; i++) {
+        var build = builds[i];
+        messages.push({
+          'color': 'danger',
+          'title': 'Broken by ' + build.LastModifiedBy,
+          'text':  '[Project] ' + build.ProjectName + '\n' +
                    '[Build step] ' + build.StepName + '\n' +
                    '[Comment] ' + build.Comment + '\n' +
-                   '[Build log] ' + build.WebUrl + '&tab=buildLog'
+                   '[Date] ' + build.FinishDate + '\n' +
+                   '[Log] <' + build.WebUrl + '&tab=buildLog|Build log>'
+        });
+      }
+
+      robopoc.sendMessages(
+        {
+          title: '*Broken builds!* :bomb::boom:',
+          messages: messages;
         });
 
       res.send({ success: true });
@@ -85,7 +97,6 @@ module.exports = function(robopoc) {
       res.send({ success: false });
       robopoc.sendErrorMessage({ title: '*Something went wrong*', message: err.message });
     }
-    //robopoc.sendMessage(msg);
   });
 
   return router;
