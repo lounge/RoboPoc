@@ -1,8 +1,8 @@
 {
-  "name": "klagobert",
+  "name": "robopoc",
   "version": "0.0.1",
-  "description": "A slack bot that displays aways states.",
-  "main": "lib/klagobert.js",
+  "description": "Poc i poc.",
+  "main": "lib/robopoc.js",
   "repository": "https://github.com/lounge/cartman",
   "scripts": {
     "start": "node index.js"
