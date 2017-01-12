@@ -23,9 +23,9 @@ module.exports = function(robopoc) {
       if (build.Status === 'FAILURE') {
         failCount++;
         messages.push({
-          'color': 'warning',
-          'mrkdwn_in': ['text', 'title'],
-          'title': '_*Broken by*_ ' + build.LastModifiedBy,
+          'color': '#6B0000',
+          'mrkdwn_in': ['text', 'pretext'],
+          'pretext': '_*Broken by*_ ' + build.LastModifiedBy,
           'text':  '*Project:* ' + build.ProjectName + '\n' +
                    '*Build step:* ' + build.StepName + '\n' +
                    '*Comment:* ' + build.Comment + '\n' +
@@ -85,7 +85,8 @@ module.exports = function(robopoc) {
         var build = builds[i];
         messages.push({
           'color': 'danger',
-          'title': 'Broken by ' + build.LastModifiedBy,
+          'mrkdwn_in': ['text', 'pretext'],
+          'pretext': 'Broken by ' + build.LastModifiedBy,
           'text':  '_Project:_ ' + build.ProjectName + '\n' +
                    '_Build step:_ ' + build.StepName + '\n' +
                    '_Comment:_ ' + build.Comment + '\n' +
