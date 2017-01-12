@@ -23,9 +23,9 @@ module.exports = function(robopoc) {
       if (build.Status === 'FAILURE') {
         failCount++;
         messages.push({
-          'color': '#850000',
+          'color': '#9E0000',
           'mrkdwn_in': ['text', 'pretext'],
-          'pretext': '_*Broken by*_ ' + build.LastModifiedBy,
+          'pretext': '*_Broken by_ ' + build.LastModifiedBy + '*',
           'text':  '*Project:* ' + build.ProjectName + '\n' +
                    '*Build step:* ' + build.StepName + '\n' +
                    '*Comment:* ' + build.Comment + '\n' +
