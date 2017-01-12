@@ -25,7 +25,7 @@ module.exports = function(robopoc) {
         messages.push({
           'color': '#9E0000',
           'mrkdwn_in': ['text', 'pretext'],
-          'pretext': '*_Broken by_ ' + build.LastModifiedBy + '*',
+          'pretext': '*_Broken by - _ '+ build.LastModifiedBy + '*',
           'text':  '*Project:* ' + build.ProjectName + '\n' +
                    '*Build step:* ' + build.StepName + '\n' +
                    '*Comment:* ' + build.Comment + '\n' +
@@ -86,7 +86,7 @@ module.exports = function(robopoc) {
         messages.push({
           'color': 'danger',
           'mrkdwn_in': ['text', 'pretext'],
-          'pretext': 'Broken by *' + build.LastModifiedBy + '*',
+          'pretext': 'Broken by -* '+ build.LastModifiedBy + '*',
           'text':  '_Project:_ ' + build.ProjectName + '\n' +
                    '_Build step:_ ' + build.StepName + '\n' +
                    '_Comment:_ ' + build.Comment + '\n' +
