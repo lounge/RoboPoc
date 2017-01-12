@@ -50,6 +50,8 @@ module.exports = function(robopoc) {
 
   router.post('/latest', function(req, res, next) {
     var build = req.body;
+    console.log('latest status: ' + build.ProjectName);
+    console.log('latest status: ' + build.Status);
     if (build.Status === 'FAILURE') {
       robopoc.sendErrorMessage(
         {
