@@ -52,7 +52,13 @@ module.exports = function(robopoc) {
     var build = req.body;
     console.log('latest status: ' + build.ProjectName);
     console.log('latest status: ' + build.Status);
-    if (build.Status === 'FAILURE') {
+    res.send({ success: true });
+  });
+
+  router.post('/latestFailed', function(req, res) {
+    try {
+      var build = req.body;
+      
       robopoc.sendErrorMessage(
         {
           title: ':boom:*' + build.LastModifiedBy + '* broke the build!:boom:',
@@ -62,12 +68,7 @@ module.exports = function(robopoc) {
                    '*[Date]* ' + build.FinishDate + '\n' +
                    '*[Log]* <' + build.WebUrl + '&tab=buildLog|Build log>'
         });
-    }
-    res.send({ success: true });
-  });
 
-  router.post('/latestFailed', function(req, res) {
-    try {
       res.send({ success: true });
     } catch (err) {
       res.send({ success: false });
