@@ -12,7 +12,6 @@ module.exports = function(robopoc) {
   });
 
   router.post('/', function(req, res, next) {
-    console.log('api: /');
     var builds = req.body;
 
     var messages = [];
@@ -49,29 +48,23 @@ module.exports = function(robopoc) {
   });
 
   router.post('/latest', function(req, res, next) {
-    console.log('api: /latest');
     var build = req.body;
+    if (build.Status === 'FAILURE') {
+      robopoc.sendErrorMessage(
+        {
+          title: ':boom:*' + build.LastModifiedBy + '* broke the build!:boom:',
+          message: '[Project] ' + build.ProjectName + '\n' +
+                   '[Build step] ' + build.StepName + '\n' +
+                   '[Comment] ' + build.Comment + '\n' +
+                   '[Date] ' + build.FinishDate + '\n' +
+                   '[Log] <' + build.WebUrl + '&tab=buildLog|Build log>'
 
-    console.log('id: ' + build.Id);
-    console.log('Number: ' + build.Number);
-    console.log('Agent: ' + build.Agent);
-    console.log('ProjectId: ' + build.ProjectId);
-    console.log('ProjectName: ' + build.ProjectName);
-    console.log('StepName: ' + build.StepName);
-    console.log('Status: ' + build.Status);
-    console.log('FinishDate: ' + build.FinishDate);
-    console.log('WebUrl: ' + build.WebUrl);
-    console.log('Href: ' + build.Href);
-    console.log('BuildConfigWebUrl: ' + build.BuildConfigWebUrl);
-    console.log('BuildConfigId: ' + build.BuildConfigId);
-    console.log('BuildTypeId: ' + build.BuildTypeId);
-    console.log('Comment: ' + build.Comment);
-
+        });
+    }
     res.send({ success: true });
   });
 
   router.post('/latestFailed', function(req, res) {
-    console.log('api: /latestFailed');
     try {
       res.send({ success: true });
     } catch (err) {
@@ -81,7 +74,6 @@ module.exports = function(robopoc) {
   });
 
   router.post('/failed', function(req, res) {
-    console.log('api: /failed');
     try {
       var builds = req.body;
       var messages = [];
