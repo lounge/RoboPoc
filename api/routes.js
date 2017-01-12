@@ -25,7 +25,7 @@ module.exports = function(robopoc) {
         messages.push({
           'color': 'warning',
           'mrkdwn_in': ['text', 'title'],
-          'title': '_*Broken by*_ ' + build.LastModifiedBy +,
+          'title': '_*Broken by*_ ' + build.LastModifiedBy,
           'text':  '*Project:* ' + build.ProjectName + '\n' +
                    '*Build step:* ' + build.StepName + '\n' +
                    '*Comment:* ' + build.Comment + '\n' +
