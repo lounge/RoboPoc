@@ -24,6 +24,7 @@ module.exports = function(robopoc) {
         failCount++;
         messages.push({
           'color': 'danger',
+          'mrkdwn_in': ['text'],
           'title': 'Broken by :boom:' + build.LastModifiedBy + ':boom:',
           'text':  '*[Project]* ' + build.ProjectName + '\n' +
                    '*[Build step]* ' + build.StepName + '\n' +
@@ -53,12 +54,11 @@ module.exports = function(robopoc) {
       robopoc.sendErrorMessage(
         {
           title: ':boom:*' + build.LastModifiedBy + '* broke the build!:boom:',
-          message: '[Project] ' + build.ProjectName + '\n' +
-                   '[Build step] ' + build.StepName + '\n' +
-                   '[Comment] ' + build.Comment + '\n' +
-                   '[Date] ' + build.FinishDate + '\n' +
-                   '[Log] <' + build.WebUrl + '&tab=buildLog|Build log>'
-
+          message:'*[Project]* ' + build.ProjectName + '\n' +
+                   '*[Build step]* ' + build.StepName + '\n' +
+                   '*[Comment]* ' + build.Comment + '\n' +
+                   '*[Date]* ' + build.FinishDate + '\n' +
+                   '*[Log]* <' + build.WebUrl + '&tab=buildLog|Build log>'
         });
     }
     res.send({ success: true });
