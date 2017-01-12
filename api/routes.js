@@ -29,7 +29,7 @@ module.exports = function(robopoc) {
           'text':  '*Project:* ' + build.ProjectName + '\n' +
                    '*Build step:* ' + build.StepName + '\n' +
                    '*Comment:* ' + build.Comment + '\n' +
-                   '*Date:* ' + build.FinishDate + '\n' +
+                   '*Date:* ' + build.FinishDateFormat + '\n' +
                    '*Log:* <' + build.WebUrl + '&tab=buildLog|Build log>'
         });
       } else {
@@ -65,7 +65,7 @@ module.exports = function(robopoc) {
           message: '*Project:* ' + build.ProjectName + '\n' +
                    '*Build step:* ' + build.StepName + '\n' +
                    '*Comment:* ' + build.Comment + '\n' +
-                   '*Date:* ' + build.FinishDate + '\n' +
+                   '*Date:* ' + build.FinishDateFormat + '\n' +
                    '*Log:* <' + build.WebUrl + '&tab=buildLog|Build log>'
         });
 
@@ -90,7 +90,7 @@ module.exports = function(robopoc) {
           'text':  '_Project:_ ' + build.ProjectName + '\n' +
                    '_Build step:_ ' + build.StepName + '\n' +
                    '_Comment:_ ' + build.Comment + '\n' +
-                   '_Date:_ ' + build.FinishDate + '\n' +
+                   '_Date:_ ' + build.FinishDateFormat + '\n' +
                    '_Log:_ <' + build.WebUrl + '&tab=buildLog|Build log>'
         });
       }
