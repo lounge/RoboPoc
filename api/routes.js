@@ -26,11 +26,11 @@ module.exports = function(robopoc) {
         messages.push({
           'color': 'danger',
           'title': 'Broken by :boom:' + build.LastModifiedBy + ':boom:',
-          'text':  '[Project] ' + build.ProjectName + '\n' +
-                   '[Build step] ' + build.StepName + '\n' +
-                   '[Comment] ' + build.Comment + '\n' +
-                   '[Date] ' + build.FinishDate + '\n' +
-                   '[Log] <' + build.WebUrl + '&tab=buildLog|Build log>'
+          'text':  '*[Project]* ' + build.ProjectName + '\n' +
+                   '*[Build step]* ' + build.StepName + '\n' +
+                   '*[Comment]* ' + build.Comment + '\n' +
+                   '*[Date]* ' + build.FinishDate + '\n' +
+                   '*[Log]* <' + build.WebUrl + '&tab=buildLog|Build log>'
         });
       } else {
         successCount++;
