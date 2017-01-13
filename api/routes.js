@@ -37,6 +37,7 @@ module.exports = function(robopoc, messages) {
           title: ':boom:*_' + build.LastModifiedBy + '_ broke the build!*:boom:',
           message: '*Project:* ' + build.ProjectName + '\n' +
                    '*Build step:* ' + build.StepName + '\n' +
+                   '*Status text:* ' + build.StatusText + '\n' +
                    '*Comment:* ' + build.Comment + '\n' +
                    '*Date:* ' + build.FinishDateFormat + '\n' +
                    '*Log:* <' + build.WebUrl + '&tab=buildLog|Build log>'
@@ -62,6 +63,7 @@ module.exports = function(robopoc, messages) {
           'pretext': 'Broken by -* '+ build.LastModifiedBy + '*',
           'text':  '_Project:_ ' + build.ProjectName + '\n' +
                    '_Build step:_ ' + build.StepName + '\n' +
+                   '_Status text:_ ' + build.StatusText + '\n' +
                    '_Comment:_ ' + build.Comment + '\n' +
                    '_Date:_ ' + build.FinishDateFormat + '\n' +
                    '_Log:_ <' + build.WebUrl + '&tab=buildLog|Build log>'
