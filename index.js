@@ -1,6 +1,7 @@
 'use strict'
 
 var RoboPoc = require('./lib/robopoc');
+var WebServices = require('./api/webservices');
 var Commands = require('./lib/commands');
 var Messages = require('./lib/messages');
 
@@ -14,8 +15,9 @@ var dbPath = process.env.MONGODB_GOLD_URI;
 var channelId = process.env.CHANNEL_ID;
 var port =  process.env.PORT || 3000;
 
+var webservices = new WebServices();
 var messages = new Messages();
-var commands = new Commands(messages);
+var commands = new Commands(messages, webservices);
 
 var robopoc = new RoboPoc({
   channelId: channelId,
@@ -25,7 +27,7 @@ var robopoc = new RoboPoc({
   commands: commands,
 });
 
-var routes = require('./api/routes')(robopoc);
+var routes = require('./api/routes')(robopoc, messages);
 
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
