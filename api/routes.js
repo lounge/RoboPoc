@@ -14,9 +14,9 @@ module.exports = function(robopoc, messages) {
   router.post('/', function(req, res, next) {
     var builds = req.body;
 
-    messages.buildStatus(builds, function(msg) {
-      robopoc.sendMessages(msg);
-    });
+    // messages.buildStatus(builds, function(msg) {
+    //   robopoc.sendMessages(msg);
+    // });
 
     res.send({ success: true });
   });
